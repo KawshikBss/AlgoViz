@@ -1,0 +1,18 @@
+.node {
+    width: 14px;
+    height: 14px;
+    border-radius: .25rem;
+    background-color: white;
+    border: 1px solid aqua;
+    cursor: pointer;
+}
+
+.visited {
+    background-color: aqua;
+    animation-name: node-selected-anim;
+}
+
+@keyframes node-selected-anim {
+    from {background-color: white;}
+    to {background-color: aqua;}
+}

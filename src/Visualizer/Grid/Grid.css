@@ -1,0 +1,8 @@
+.grid-main {
+    width: fit-content;
+    margin: auto;
+}
+
+.grid-row {
+    display: flex;
+}
