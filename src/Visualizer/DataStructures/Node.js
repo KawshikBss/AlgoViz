@@ -10,12 +10,28 @@ class Node {
     return this.status;
   }
 
+  isUnvisited() {
+    return this.status === "unvisited";
+  }
+
+  isVisited() {
+    return this.status === "visited";
+  }
+
   setVisited() {
     this.status = "visited";
   }
 
+  isStart() {
+    return this.status === "start";
+  }
+
   setStart() {
     this.status = "start";
+  }
+
+  isEnd() {
+    return this.status === "end";
   }
 
   setEnd() {

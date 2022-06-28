@@ -10,14 +10,24 @@ class Graph {
       }
       this.nodes.push(tempRow);
     }
+    this.startNode = null;
+    this.endNode = null;
   }
 
   getNodes() {
     return this.nodes;
   }
 
-  setNodeVisited(row, col) {
-    this.nodes[row][col].setVisited();
+  handleNode(row, col) {
+    const node = this.nodes[row][col];
+    if (node.isVisited() || node.isStart() || node.isEnd()) return;
+    if (this.startNode === null) {
+      node.setStart();
+      this.startNode = node;
+    } else if (this.endNode === null) {
+      node.setEnd();
+      this.endNode = node;
+    } else node.setVisited();
   }
 }
 
