@@ -20,7 +20,17 @@ class Graph {
 
   handleNode(row, col) {
     const node = this.nodes[row][col];
-    if (node.isVisited() || node.isStart() || node.isEnd()) return;
+    if (node.isVisited()) return;
+    if (node.isStart() && node === this.startNode) {
+      node.setUnvisited();
+      this.startNode = null;
+      return;
+    } else if (node.isEnd() && node === this.endNode) {
+      node.setUnvisited();
+      this.endNode = null;
+      return;
+    }
+
     if (this.startNode === null) {
       node.setStart();
       this.startNode = node;

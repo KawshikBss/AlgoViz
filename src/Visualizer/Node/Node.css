@@ -20,6 +20,7 @@
     border: 1px solid aquamarine;
     animation-name: start-selected-anim;
     animation-duration: 0.5s;
+    cursor: crosshair;
 }
 
 .end {
@@ -27,6 +28,7 @@
     border: 1px solid crimson;
     animation-name: end-selected-anim;
     animation-duration: 0.5s;
+    cursor: crosshair;
 }
 
 .visited {

@@ -14,6 +14,10 @@ class Node {
     return this.status === "unvisited";
   }
 
+  setUnvisited() {
+    this.status = "unvisited";
+  }
+
   isVisited() {
     return this.status === "visited";
   }
