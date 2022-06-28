@@ -10,33 +10,44 @@
     justify-content: center;
 }
 
-.node span {
-    color: cornflowerblue;
+.start span {
+    color: teal;
     font-size: x-large;
 }
 
+.end span {
+    color: tomato;
+    font-size: large;
+}
+
 .start {
-    background-color: aquamarine;
-    border: 1px solid aquamarine;
+    background-image: radial-gradient(aquamarine, teal);
     animation-name: start-selected-anim;
     animation-duration: 0.5s;
-    cursor: crosshair;
 }
 
 .end {
-    background-color: crimson;
-    border: 1px solid crimson;
+    background-image: radial-gradient(crimson, firebrick);
     animation-name: end-selected-anim;
     animation-duration: 0.5s;
-    cursor: crosshair;
+}
+
+.wall {
+    background-image: radial-gradient(black, darkslategrey);
+    animation-name: wall-node-anim;
+    animation-duration: 0.5s;
+}
+
+.current {
+    background-color: gold;
+    animation-name: current-node-anim;
+    animation-duration: 0.5s;
 }
 
 .visited {
-    background-color: navy;
-    border: 1px solid navy;
+    background-image: radial-gradient(navy, mediumblue);
     animation-name: node-visited-anim;
     animation-duration: 0.5s;
-    cursor: not-allowed;
 }
 
 @keyframes start-selected-anim {
@@ -58,6 +69,28 @@
     to {
         border-radius: 0.25rem;
         background-color: crimson;
+    }
+}
+
+@keyframes wall-node-anim {
+    from {
+        border-radius: 1rem;
+        background-color: white;
+    }
+    to {
+        border-radius: 0.25rem;
+        background-color: darkslategrey;
+    }
+}
+
+@keyframes current-node-anim {
+    from {
+        border-radius: 1rem;
+        background-color: white;
+    }
+    to {
+        border-radius: 0.25rem;
+        background-color: gold;
     }
 }
 
