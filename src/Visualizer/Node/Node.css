@@ -1,18 +1,63 @@
 .node {
-    width: 14px;
-    height: 14px;
+    width: 19px;
+    height: 19px;
     border-radius: .25rem;
     background-color: white;
     border: 1px solid aqua;
     cursor: pointer;
 }
 
-.visited {
-    background-color: aqua;
-    animation-name: node-selected-anim;
+.start {
+    background-color: aquamarine;
+    border: 1px solid aquamarine;
+    animation-name: start-selected-anim;
+    animation-duration: 0.5s;
 }
 
-@keyframes node-selected-anim {
-    from {background-color: white;}
-    to {background-color: aqua;}
+.end {
+    background-color: crimson;
+    border: 1px solid crimson;
+    animation-name: end-selected-anim;
+    animation-duration: 0.5s;
+}
+
+.visited {
+    background-color: navy;
+    border: 1px solid navy;
+    animation-name: node-visited-anim;
+    animation-duration: 0.5s;
+    cursor: not-allowed;
+}
+
+@keyframes start-selected-anim {
+    from {
+        border-radius: 1rem;
+        background-color: white;
+    }
+    to {
+        border-radius: 0.25rem;
+        background-color: aquamarine;
+    }
+}
+
+@keyframes end-selected-anim {
+    from {
+        border-radius: 1rem;
+        background-color: white;
+    }
+    to {
+        border-radius: 0.25rem;
+        background-color: crimson;
+    }
+}
+
+@keyframes node-visited-anim {
+    from {
+        background-color: white;
+        border-radius: 1rem;
+    }
+    to {
+        background-color: navy;
+        border-radius: 0.25rem;
+    }
 }
