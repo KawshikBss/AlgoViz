@@ -6,7 +6,15 @@ function Node({ status, handleClick }) {
       className={`node ${status}`}
       onClick={handleClick}
       onDrag={handleClick}
-    ></div>
+    >
+      {status === "start" ? (
+        <span>&#x2638;</span>
+      ) : status === "end" ? (
+        <span>&#x2691;</span>
+      ) : (
+        <></>
+      )}
+    </div>
   );
 }
 

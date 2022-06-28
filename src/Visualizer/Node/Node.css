@@ -1,10 +1,18 @@
 .node {
-    width: 19px;
-    height: 19px;
+    width: 24px;
+    height: 24px;
     border-radius: .25rem;
     background-color: white;
     border: 1px solid aqua;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.node span {
+    color: cornflowerblue;
+    font-size: x-large;
 }
 
 .start {
