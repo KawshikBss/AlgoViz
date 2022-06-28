@@ -2,6 +2,8 @@ import Node from "./Node";
 
 class Graph {
   constructor(rows, cols) {
+    this.rowLen = rows - 1;
+    this.colLen = cols - 1;
     this.nodes = [];
     for (let i = 0; i < rows; i++) {
       let tempRow = [];
@@ -12,6 +14,7 @@ class Graph {
     }
     this.startNode = null;
     this.endNode = null;
+    this.updateNeighbors();
   }
 
   getNodes() {
@@ -29,6 +32,9 @@ class Graph {
       node.setUnvisited();
       this.endNode = null;
       return;
+    } else if (node.isWall()) {
+      node.setUnvisited();
+      return;
     }
 
     if (this.startNode === null) {
@@ -37,7 +43,27 @@ class Graph {
     } else if (this.endNode === null) {
       node.setEnd();
       this.endNode = node;
-    } else node.setVisited();
+    } else node.setWall();
+  }
+
+  getNeighbors(row, col) {
+    const neighbors = [];
+    if (row < 0 || row >= this.rowLen || col < 0 || col >= this.colLen)
+      return neighbors;
+    if (row > 0) neighbors.push(this.nodes[row - 1][col]);
+    if (row < this.rowLen) neighbors.push(this.nodes[row + 1][col]);
+    if (col > 0) neighbors.push(this.nodes[row][col - 1]);
+    if (col < this.colLen) neighbors.push(this.nodes[row][col + 1]);
+    return neighbors;
+  }
+
+  updateNeighbors() {
+    for (let i = 0; i < this.rowLen; i++) {
+      for (let j = 0; j < this.colLen; j++) {
+        const neighbors = this.getNeighbors(i, j);
+        this.nodes[i][j].updateNeighbors(neighbors);
+      }
+    }
   }
 }
 

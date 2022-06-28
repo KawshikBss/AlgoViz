@@ -3,7 +3,7 @@ import Grid from "./Visualizer/Grid/Grid";
 function App() {
   return (
     <div className="App">
-      <Grid rows={20} cols={50} />
+      <Grid rows={15} cols={40} />
     </div>
   );
 }

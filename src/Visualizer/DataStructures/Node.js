@@ -6,6 +6,10 @@ class Node {
     this.neighbors = [];
   }
 
+  getCoordinates() {
+    return `(${this.row}, ${this.col})`;
+  }
+
   getStatus() {
     return this.status;
   }
@@ -42,12 +46,24 @@ class Node {
     this.status = "end";
   }
 
+  isCurrent() {
+    return this.status === "current";
+  }
+
   setCurrent() {
     this.status = "current";
   }
 
+  isWall() {
+    return this.status === "wall";
+  }
+
   setWall() {
     this.status = "wall";
+  }
+
+  isPath() {
+    return this.status === "path";
   }
 
   setPath() {
