@@ -4,15 +4,25 @@ class PriorityQueue {
     this.size = 0;
   }
 
+  isEmpty() {
+    return this.size === 0;
+  }
+
   getParent(index) {
     return this.queue[Math.floor((index - 1) / 2)];
   }
 
   getChildren(index) {
-    return (
-      this.queue[Math.floor(2 * index + 1)],
-      this.queue[Math.floor(2 * index + 2)]
-    );
+    let leftIndex = Math.floor(2 * index + 1);
+    let rightIndex = Math.floor(2 * index + 2);
+    return [
+      leftIndex < this.size - 1 && leftIndex >= 0
+        ? this.queue[leftIndex]
+        : null,
+      rightIndex < this.size - 1 && rightIndex >= 0
+        ? this.queue[rightIndex]
+        : null,
+    ];
   }
 
   swap(index1, index2) {
@@ -37,12 +47,12 @@ class PriorityQueue {
     let rightIndex = index * 2 + 2;
     let min = index;
     if (
-      leftIndex < this.size &&
+      leftIndex < this.size - 1 &&
       this.queue[leftIndex].weight < this.queue[min].weight
     )
       min = leftIndex;
     if (
-      rightIndex < this.size &&
+      rightIndex < this.size - 1 &&
       this.queue[rightIndex].weight < this.queue[min].weight
     )
       min = rightIndex;
@@ -60,6 +70,40 @@ class PriorityQueue {
       let parentIndex = this.queue.indexOf(this.getParent(index));
       this.swap(index, parentIndex);
       index = parentIndex;
+    }
+  }
+
+  poll() {
+    this.swap(0, this.size - 1);
+    let min = this.queue.pop();
+    this.size--;
+    let top = this.queue[0];
+    this.heapify(top);
+
+    return min;
+  }
+
+  heapify(top) {
+    if (!top) return;
+    let index = this.queue.indexOf(top);
+    let [leftChild, rightChild] = this.getChildren(index);
+    leftChild =
+      leftChild === null ? { weight: Number.POSITIVE_INFINITY } : leftChild;
+    rightChild =
+      rightChild === null ? { weight: Number.POSITIVE_INFINITY } : rightChild;
+
+    let min =
+      leftChild.weight < rightChild.weight
+        ? leftChild.weight < top.weight
+          ? leftChild
+          : top
+        : rightChild.weight < top.weight
+        ? rightChild
+        : top;
+
+    if (min !== top) {
+      this.swap(index, this.queue.indexOf(min));
+      this.heapify(min);
     }
   }
 }
