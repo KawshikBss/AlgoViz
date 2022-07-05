@@ -21,6 +21,14 @@ class Graph {
     return this.nodes;
   }
 
+  getStartNode() {
+    return this.startNode;
+  }
+
+  getEndNode() {
+    return this.endNode;
+  }
+
   handleNode(row, col) {
     const node = this.nodes[row][col];
     if (node.isVisited()) return;
@@ -44,6 +52,16 @@ class Graph {
       node.setEnd();
       this.endNode = node;
     } else node.setWall();
+  }
+
+  setNodeVisited(row, col) {
+    if (row <= this.rowLen && col <= this.colLen)
+      this.nodes[row][col].setVisited();
+  }
+
+  setNodeCurrent(row, col) {
+    if (row <= this.rowLen && col <= this.colLen)
+      this.nodes[row][col].setCurrent();
   }
 
   getNeighbors(row, col) {
