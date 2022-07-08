@@ -64,6 +64,11 @@ class Graph {
       this.nodes[row][col].setCurrent();
   }
 
+  setNodePath(row, col) {
+    if (row <= this.rowLen && col <= this.colLen)
+      this.nodes[row][col].setPath();
+  }
+
   getNeighbors(row, col) {
     const neighbors = [];
     if (row < 0 || row >= this.rowLen || col < 0 || col >= this.colLen)

@@ -50,6 +50,12 @@
     animation-duration: 0.5s;
 }
 
+.path {
+    background-image: linear-gradient(darkslateblue, slateblue);
+    animation-name: node-path-anim;
+    animation-duration: 0.5s;
+}
+
 @keyframes start-selected-anim {
     from {
         border-radius: 1rem;
@@ -85,7 +91,7 @@
 
 @keyframes current-node-anim {
     from {
-        border-radius: 1rem;
+        border-radius: 10rem;
         background-color: white;
     }
     to {
@@ -101,6 +107,17 @@
     }
     to {
         background-color: navy;
+        border-radius: 0.25rem;
+    }
+}
+
+@keyframes node-path-anim {
+    from {
+        background-color: white;
+        border-radius: 1rem;
+    }
+    to {
+        background-color: darkslateblue;
         border-radius: 0.25rem;
     }
 }

@@ -4,6 +4,20 @@ class Node {
     this.col = col;
     this.status = "unvisited";
     this.neighbors = [];
+    this.weight = Number.POSITIVE_INFINITY;
+    this.previous = null;
+  }
+
+  getPrevious() {
+    return this.previous;
+  }
+
+  setPrevious(node) {
+    this.previous = node;
+  }
+
+  setWeight(weight) {
+    this.weight = weight >= 0 ? weight : 0;
   }
 
   getCoordinates() {

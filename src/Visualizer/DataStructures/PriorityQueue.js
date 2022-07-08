@@ -34,7 +34,7 @@ class PriorityQueue {
   shiftUp(data) {
     let index = this.queue.indexOf(data);
     let parentIndex = Math.floor((index - 1) / 2);
-    while (index != 0 && this.queue[index] < this.queue[parentIndex]) {
+    while (index !== 0 && this.queue[index] < this.queue[parentIndex]) {
       this.swap(index, parentIndex);
       index = parentIndex;
       parentIndex = Math.floor((index - 1) / 2);
@@ -66,7 +66,7 @@ class PriorityQueue {
     this.queue.push(data);
     let index = this.size;
     this.size++;
-    while (index != 0 && data.weight < this.getParent(index).weight) {
+    while (index !== 0 && data.weight < this.getParent(index).weight) {
       let parentIndex = this.queue.indexOf(this.getParent(index));
       this.swap(index, parentIndex);
       index = parentIndex;
@@ -81,6 +81,16 @@ class PriorityQueue {
     this.heapify(top);
 
     return min;
+  }
+
+  update(data, updatedData) {
+    const currentData = this.queue.find(data);
+    if (data === null || data === undefined) return false;
+    const index = this.queue.indexOf(currentData);
+    if (this.queue[index].weight <= updatedData.weight) return false;
+    this.queue[index] = updatedData;
+    this.heapify(this.queue[index]);
+    return true;
   }
 
   heapify(top) {
@@ -107,3 +117,4 @@ class PriorityQueue {
     }
   }
 }
+export default PriorityQueue;

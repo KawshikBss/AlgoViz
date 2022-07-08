@@ -14,7 +14,6 @@ class Grid extends React.Component {
 
   handleNodeClick(row, col) {
     const graph = this.state.graph;
-    console.log(graph);
     graph.handleNode(row, col);
     this.setState({ graph });
   }
@@ -22,7 +21,7 @@ class Grid extends React.Component {
   setNodeVisited(row, col) {
     const graph = this.state.graph;
     const node = graph.getNodes()[row][col];
-    if (node.isStart() || node.isEnd()) return;
+    if (node.isStart() || node.isEnd() || node.isWall()) return;
     graph.setNodeVisited(row, col);
     this.setState({ graph });
   }
@@ -30,19 +29,28 @@ class Grid extends React.Component {
   setNodeCurrent(row, col) {
     const graph = this.state.graph;
     const node = graph.getNodes()[row][col];
-    if (node.isStart() || node.isEnd()) return;
+    if (node.isStart() || node.isEnd() || node.isWall()) return;
     graph.setNodeCurrent(row, col);
+    this.setState({ graph });
+  }
+
+  setNodePath(row, col) {
+    const graph = this.state.graph;
+    const node = graph.getNodes()[row][col];
+    if (node.isStart() || node.isEnd() || node.isWall()) return;
+    graph.setNodePath(row, col);
     this.setState({ graph });
   }
 
   startAlgorithm() {
     const graph = this.state.graph;
     const algorithm = new Dijkstra(
-      graph.getNodes(),
+      graph,
       graph.getStartNode(),
       graph.getEndNode(),
       this.setNodeVisited.bind(this),
-      this.setNodeCurrent.bind(this)
+      this.setNodeCurrent.bind(this),
+      this.setNodePath.bind(this)
     );
     algorithm.findPath();
   }
