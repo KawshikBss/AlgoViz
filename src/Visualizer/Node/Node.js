@@ -11,6 +11,8 @@ function Node({ status, handleClick }) {
         <span>&#x2638;</span>
       ) : status === "end" ? (
         <span>&#x2691;</span>
+      ) : status === "path" ? (
+        <span></span>
       ) : (
         <></>
       )}

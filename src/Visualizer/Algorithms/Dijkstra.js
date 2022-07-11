@@ -18,7 +18,7 @@ class Dijkstra {
     this.visitedFunc = setNodeVisited;
     this.currentFunc = setNodeCurrent;
     this.pathFunc = setNodePath;
-    this.animationSpeed = 10;
+    this.animationSpeed = 500;
   }
 
   getVisitedNodes(nodes) {
@@ -65,19 +65,13 @@ class Dijkstra {
   }
 
   markPath(node) {
-    while (node.row !== this.startNode.row && node.col !== this.startNode.col) {
+    while (
+      !(node.row === this.startNode.row && node.col === this.startNode.col)
+    ) {
+      console.log(node);
       setTimeout(this.pathFunc, this.animationSpeed, node.row, node.col);
       node = node.getPrevious();
     }
-    /*if (node === undefined) return false;
-    if (node.row === this.endNode.row && node.col === this.endNode.col) {
-      console.log("stat", this.startNode);
-      setTimeout(this.pathFunc, this.animationSpeed, node.row, node.col);
-      if (node.row === this.startNode.row && node.col === this.startNode.col)
-        return true;
-    }
-    //this.markPath(node.getPrevious());
-    this.markPath(node.previous);*/
   }
 
   findPath() {
@@ -108,7 +102,7 @@ class Dijkstra {
       }
       neighbors = this.graph.getNeighbors(current.row, current.col);
       if (neighbors === null || neighbors === undefined) return;
-      for (let i = 0; i < neighbors.length; i++) {
+      for (let i = neighbors.length - 1; i >= 0; i--) {
         let neighbor = neighbors[i];
         if (this.getVisitedWeight(current) + 1 < neighbor.weight) {
           neighbor.setPrevious(current);
@@ -118,7 +112,13 @@ class Dijkstra {
         }
       }
       this.putVisitedNode(current);
-      this.updateVisitedNodes();
+      setTimeout(
+        this.visitedFunc,
+        this.animationSpeed,
+        current.row,
+        current.col
+      );
+      //this.updateVisitedNodes();
     }
     /*
     for (let i = 0; i < neighbors.length; i++)

@@ -12,6 +12,13 @@ class PriorityQueue {
     return this.queue[Math.floor((index - 1) / 2)];
   }
 
+  getLeftChildIndex(parentIndex) {
+    return Math.floor(2 * parentIndex + 1);
+  }
+  getRightChildIndex(parentIndex) {
+    return Math.floor(2 * parentIndex + 2);
+  }
+
   getChildren(index) {
     let leftIndex = Math.floor(2 * index + 1);
     let rightIndex = Math.floor(2 * index + 2);
@@ -96,24 +103,25 @@ class PriorityQueue {
   heapify(top) {
     if (!top) return;
     let index = this.queue.indexOf(top);
-    let [leftChild, rightChild] = this.getChildren(index);
-    leftChild =
-      leftChild === null ? { weight: Number.POSITIVE_INFINITY } : leftChild;
-    rightChild =
-      rightChild === null ? { weight: Number.POSITIVE_INFINITY } : rightChild;
+    const leftIndex = this.getLeftChildIndex(index);
+    const rightIndex = this.getRightChildIndex(index);
 
-    let min =
-      leftChild.weight < rightChild.weight
-        ? leftChild.weight < top.weight
-          ? leftChild
-          : top
-        : rightChild.weight < top.weight
-        ? rightChild
-        : top;
+    let minIndex = index;
 
-    if (min !== top) {
-      this.swap(index, this.queue.indexOf(min));
-      this.heapify(min);
+    if (
+      leftIndex < this.size &&
+      this.queue[leftIndex].weight < this.queue[index].weight
+    )
+      minIndex = leftIndex;
+    if (
+      rightIndex < this.size &&
+      this.queue[rightIndex].weight < this.queue[minIndex].weight
+    )
+      minIndex = rightIndex;
+
+    if (minIndex !== index) {
+      this.swap(index, minIndex);
+      this.heapify(this.queue[minIndex]);
     }
   }
 }

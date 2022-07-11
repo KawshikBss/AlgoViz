@@ -2,8 +2,8 @@ import Node from "./Node";
 
 class Graph {
   constructor(rows, cols) {
-    this.rowLen = rows - 1;
-    this.colLen = cols - 1;
+    this.rowLen = rows;
+    this.colLen = cols;
     this.nodes = [];
     for (let i = 0; i < rows; i++) {
       let tempRow = [];
@@ -54,6 +54,14 @@ class Graph {
     } else node.setWall();
   }
 
+  resetGraph() {
+    for (let i = 0; i < this.rowLen; i++) {
+      for (let j = 0; j < this.colLen; j++) this.nodes[i][j].setUnvisited();
+    }
+    this.startNode = null;
+    this.endNode = null;
+  }
+
   setNodeVisited(row, col) {
     if (row <= this.rowLen && col <= this.colLen)
       this.nodes[row][col].setVisited();
@@ -73,10 +81,10 @@ class Graph {
     const neighbors = [];
     if (row < 0 || row >= this.rowLen || col < 0 || col >= this.colLen)
       return neighbors;
+    if (col < this.colLen - 1) neighbors.push(this.nodes[row][col + 1]);
     if (row > 0) neighbors.push(this.nodes[row - 1][col]);
-    if (row < this.rowLen) neighbors.push(this.nodes[row + 1][col]);
     if (col > 0) neighbors.push(this.nodes[row][col - 1]);
-    if (col < this.colLen) neighbors.push(this.nodes[row][col + 1]);
+    if (row < this.rowLen - 1) neighbors.push(this.nodes[row + 1][col]);
     return neighbors;
   }
 
