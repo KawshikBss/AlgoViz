@@ -84,6 +84,12 @@ class Node {
     this.status = "path";
   }
 
+  resetNode() {
+    this.setUnvisited();
+    this.weight = Number.POSITIVE_INFINITY;
+    this.previous = null;
+  }
+
   updateNeighbors(neighbors) {
     neighbors.forEach((neighbor) => {
       this.neighbors.push(neighbor);

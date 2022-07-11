@@ -56,7 +56,7 @@ class Graph {
 
   resetGraph() {
     for (let i = 0; i < this.rowLen; i++) {
-      for (let j = 0; j < this.colLen; j++) this.nodes[i][j].setUnvisited();
+      for (let j = 0; j < this.colLen; j++) this.nodes[i][j].resetNode();
     }
     this.startNode = null;
     this.endNode = null;
