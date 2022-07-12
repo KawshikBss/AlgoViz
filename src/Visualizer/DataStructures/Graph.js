@@ -82,6 +82,13 @@ class Graph {
     this.nodes[this.endNode.row][this.endNode.col].setEnd();
   }
 
+  resetWallNodes() {
+    for (let i = 0; i < this.rowLen; i++) {
+      for (let j = 0; j < this.colLen; j++)
+        if (this.nodes[i][j].isWall()) this.nodes[i][j].resetNode();
+    }
+  }
+
   setNodeVisited(row, col) {
     if (row <= this.rowLen && col <= this.colLen)
       this.nodes[row][col].setVisited();

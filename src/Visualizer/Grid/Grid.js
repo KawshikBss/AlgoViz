@@ -55,6 +55,12 @@ class Grid extends React.Component {
     this.setState({ graph });
   }
 
+  resetWalls() {
+    const graph = this.state.graph;
+    graph.resetWallNodes();
+    this.setState({ graph });
+  }
+
   startAlgorithm() {
     const graph = this.state.graph;
     const algorithm = new Dijkstra(
@@ -75,6 +81,7 @@ class Grid extends React.Component {
           startAlgorithm={this.startAlgorithm.bind(this)}
           resetGraph={this.resetGraph.bind(this)}
           resetPath={this.resetPath.bind(this)}
+          resetWalls={this.resetWalls.bind(this)}
         />
         <div className="grid-main">
           {this.state.graph.getNodes().map((row) => (
