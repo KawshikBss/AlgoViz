@@ -1,9 +1,9 @@
 import React from "react";
 import Node from "../Node/Node";
-import "./Grid.css";
-import "../../styles/buttons.css";
 import Graph from "../DataStructures/Graph";
 import Dijkstra from "../Algorithms/Dijkstra";
+import "./Grid.css";
+import Header from "../Components/Header";
 
 class Grid extends React.Component {
   constructor(props) {
@@ -49,6 +49,12 @@ class Grid extends React.Component {
     this.setState({ graph });
   }
 
+  resetPath() {
+    const graph = this.state.graph;
+    graph.resetPathNodes();
+    this.setState({ graph });
+  }
+
   startAlgorithm() {
     const graph = this.state.graph;
     const algorithm = new Dijkstra(
@@ -65,12 +71,11 @@ class Grid extends React.Component {
   render() {
     return (
       <div>
-        <button className="button-85" onClick={this.startAlgorithm.bind(this)}>
-          Start
-        </button>
-        <button className="button-85" onClick={this.resetGraph.bind(this)}>
-          Reset
-        </button>
+        <Header
+          startAlgorithm={this.startAlgorithm.bind(this)}
+          resetGraph={this.resetGraph.bind(this)}
+          resetPath={this.resetPath.bind(this)}
+        />
         <div className="grid-main">
           {this.state.graph.getNodes().map((row) => (
             <span className="grid-row">

@@ -62,6 +62,26 @@ class Graph {
     this.endNode = null;
   }
 
+  resetPathNodes() {
+    let walls = [];
+    let tmpSart = null;
+    let tmpEnd = null;
+    for (let i = 0; i < this.rowLen; i++) {
+      for (let j = 0; j < this.colLen; j++) {
+        if (this.nodes[i][j].isWall()) walls.push(this.nodes[i][j]);
+        else if (this.nodes[i][j].isStart()) tmpSart = this.nodes[i][j];
+        else if (this.nodes[i][j].isEnd()) tmpEnd = this.nodes[i][j];
+        this.nodes[i][j].resetNode();
+      }
+    }
+    for (let i = 0; i < walls.length; i++)
+      this.nodes[walls[i].row][walls[i].col].setWall();
+    this.startNode = tmpSart;
+    this.endNode = tmpEnd;
+    this.nodes[this.startNode.row][this.startNode.col].setStart();
+    this.nodes[this.endNode.row][this.endNode.col].setEnd();
+  }
+
   setNodeVisited(row, col) {
     if (row <= this.rowLen && col <= this.colLen)
       this.nodes[row][col].setVisited();
