@@ -12,8 +12,10 @@ class Graph {
       }
       this.nodes.push(tempRow);
     }
-    this.startNode = null;
-    this.endNode = null;
+    this.nodes[Math.floor(rows / 2)][Math.floor(cols / 3)].setStart();
+    this.nodes[Math.floor(rows / 2)][Math.floor(cols / 3) * 2].setEnd();
+    this.startNode = this.nodes[Math.floor(rows / 2)][Math.floor(cols / 3)];
+    this.endNode = this.nodes[Math.floor(rows / 2)][Math.floor(cols / 3) * 2];
     this.updateNeighbors();
   }
 

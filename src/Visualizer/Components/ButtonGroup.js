@@ -1,9 +1,11 @@
 import React from "react";
 import "../../styles/ButtonGroup.css";
+import DropMenu from "./DropMenu";
 
 function ButtonGroup({ startAlgorithm, resetGraph, resetPath, resetWalls }) {
   return (
     <div className="btn-group">
+      <DropMenu />
       <button className="btn-start" onClick={startAlgorithm}>
         Start
       </button>

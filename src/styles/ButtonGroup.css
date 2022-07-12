@@ -42,6 +42,7 @@
     height: 50px;
     border-radius: 0.21rem;
     background-color: teal;
+    box-shadow: 2px 2px 0 0 darkslategray;
 }
   
   /*.btn-group button:not(:last-child) {
