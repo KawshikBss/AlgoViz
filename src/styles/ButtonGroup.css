@@ -1,11 +1,35 @@
 .btn-group .btn-group-item {
-    background-color: aquamarine;
-    border: 1px solid aqua;
+    /*background-color: aquamarine;
+    border: 2px solid darkslategray;
     border-radius: 0.21rem;
-    color: teal;
+    color: teal;*/
+    background-color: teal;
+    border: none;
+    color: white;
     padding: 10px 24px;
     cursor: pointer;
     float: left;
+  }
+  
+  .btn-group .btn-group-item:hover {
+    color: aquamarine;
+  }
+  
+  .btn-group .btn-start {
+    background-image: radial-gradient(teal, aquamarine);
+    border: 5px solid darkslategray;
+    color: white;
+
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  }
+  
+  .btn-group .btn-start:hover {
+    background-color: teal;
+    color: aquamarine;
+    border: 5px solid aquamarine;
   }
 
   .btn-group {
@@ -14,16 +38,13 @@
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 40px;
-    border-bottom-left-radius: 0.21rem;
-    border-bottom-right-radius: 0.21rem;
-    background-image: radial-gradient(aqua, teal);
+    margin-top: 30px;
+    height: 50px;
+    border-radius: 0.21rem;
+    background-color: teal;
 }
   
-  .btn-group button:not(:last-child) {
+  /*.btn-group button:not(:last-child) {
     border-right: none;
-  }  
+  }  */
  
-  .btn-group .btn-group-item:hover {
-    background-color: teal;
-    color: aqua;
-  }
