@@ -51,7 +51,7 @@
 }
 
 .path {
-    background-image: radial-gradient(mediumaquamarine, teal);
+    background-image: radial-gradient(mediumpurple, rebeccapurple);
     animation-name: node-path-anim;
     animation-duration: 0.5s;
 }
