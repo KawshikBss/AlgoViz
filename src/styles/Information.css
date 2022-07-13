@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
+.info-tab {
+  display: flex;
+  justify-content: space-around;
+  font-family: 'Roboto Mono', monospace;
+  color: darkslategray;
+  margin-bottom: 30px;
+}
+
+.info-tab-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.info-tab-item h3 {
+  margin-left: 10px;
+}
