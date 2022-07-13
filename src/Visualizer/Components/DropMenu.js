@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/Dropdown.css";
 
-function DropMenu() {
+function DropMenu({ algorithms, currentAlgorithm, setCurrentAlgorithm }) {
   const [isActive, setActive] = useState(false);
   function getClassNames() {
     if (isActive) return "dropdown active";
@@ -15,14 +15,29 @@ function DropMenu() {
           setActive(!isActive);
         }}
       >
-        Select Algorithm
+        {currentAlgorithm === null
+          ? "Select Algorithm"
+          : "Visualize " + currentAlgorithm}
       </button>
       <div className="dropdown-menu">
         <div className="dropdown-links">
-          <button className="link">Dijkstra's</button>
-          <button className="link">A*</button>
-          <button className="link">BFS</button>
-          <button className="link">BFS</button>
+          {algorithms.map((alg) => {
+            return (
+              <button
+                key={algorithms.indexOf(alg)}
+                className="link"
+                onClick={() => {
+                  setCurrentAlgorithm(algorithms.indexOf(alg));
+                  setActive(false);
+                }}
+                onBlur={() => {
+                  setActive(false);
+                }}
+              >
+                {alg}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

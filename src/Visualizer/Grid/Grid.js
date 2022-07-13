@@ -10,7 +10,16 @@ class Grid extends React.Component {
     super(props);
     this.state = {
       graph: new Graph(props.rows, props.cols),
+      algorithms: ["Dijkstra's", "A*", "BFS", "DFS", "Kruskall's"],
+      currentAlgorithm: null,
     };
+  }
+
+  setCurrentAlgorithm(algIndex) {
+    let currentAlgorithm = null;
+    if (algIndex >= 0 && algIndex < this.state.algorithms.length)
+      currentAlgorithm = this.state.algorithms[algIndex];
+    this.setState({ currentAlgorithm });
   }
 
   handleNodeClick(row, col) {
@@ -63,14 +72,23 @@ class Grid extends React.Component {
 
   startAlgorithm() {
     const graph = this.state.graph;
-    const algorithm = new Dijkstra(
-      graph,
-      graph.getStartNode(),
-      graph.getEndNode(),
-      this.setNodeVisited.bind(this),
-      this.setNodeCurrent.bind(this),
-      this.setNodePath.bind(this)
-    );
+    let algorithm = null;
+    switch (this.state.currentAlgorithm) {
+      case "Dijkstra's":
+        algorithm = new Dijkstra(
+          graph,
+          graph.getStartNode(),
+          graph.getEndNode(),
+          this.setNodeVisited.bind(this),
+          this.setNodeCurrent.bind(this),
+          this.setNodePath.bind(this)
+        );
+        break;
+      default:
+        console.log("No algorithm selected");
+    }
+
+    if (algorithm === null) return;
     algorithm.findPath();
   }
 
@@ -82,6 +100,9 @@ class Grid extends React.Component {
           resetGraph={this.resetGraph.bind(this)}
           resetPath={this.resetPath.bind(this)}
           resetWalls={this.resetWalls.bind(this)}
+          algorithms={this.state.algorithms}
+          currentAlgorithm={this.state.currentAlgorithm}
+          setCurrentAlgorithm={this.setCurrentAlgorithm.bind(this)}
         />
         <div className="grid-main">
           {this.state.graph.getNodes().map((row) => (

@@ -2,10 +2,22 @@ import React from "react";
 import "../../styles/ButtonGroup.css";
 import DropMenu from "./DropMenu";
 
-function ButtonGroup({ startAlgorithm, resetGraph, resetPath, resetWalls }) {
+function ButtonGroup({
+  startAlgorithm,
+  resetGraph,
+  resetPath,
+  resetWalls,
+  algorithms,
+  currentAlgorithm,
+  setCurrentAlgorithm,
+}) {
   return (
     <div className="btn-group">
-      <DropMenu />
+      <DropMenu
+        algorithms={algorithms}
+        currentAlgorithm={currentAlgorithm}
+        setCurrentAlgorithm={setCurrentAlgorithm}
+      />
       <button className="btn-start" onClick={startAlgorithm}>
         Start
       </button>

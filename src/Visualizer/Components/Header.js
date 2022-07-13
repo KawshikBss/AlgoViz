@@ -1,7 +1,15 @@
 import React from "react";
 import ButtonGroup from "./ButtonGroup";
 
-function Header({ startAlgorithm, resetGraph, resetPath, resetWalls }) {
+function Header({
+  startAlgorithm,
+  resetGraph,
+  resetPath,
+  resetWalls,
+  algorithms,
+  currentAlgorithm,
+  setCurrentAlgorithm,
+}) {
   return (
     <div>
       <ButtonGroup
@@ -9,6 +17,9 @@ function Header({ startAlgorithm, resetGraph, resetPath, resetWalls }) {
         resetGraph={resetGraph}
         resetPath={resetPath}
         resetWalls={resetWalls}
+        algorithms={algorithms}
+        currentAlgorithm={currentAlgorithm}
+        setCurrentAlgorithm={setCurrentAlgorithm}
       />
     </div>
   );

@@ -17,6 +17,7 @@ class Dijkstra {
     this.queue = new PriorityQueue();
     this.visitedFunc = setNodeVisited;
     this.currentFunc = setNodeCurrent;
+    this.visitedNodesToAnimate = [];
     this.pathFunc = setNodePath;
     this.animationSpeed = 500;
   }
@@ -53,14 +54,15 @@ class Dijkstra {
   }
 
   updateVisitedNodes() {
-    for (let i = 0; i < this.visitedNodes.length; i++) {
-      let node = this.visitedNodes[i];
-      if (
-        node.isVisited() ||
-        !(this.getVisitedWeight(node) < Number.POSITIVE_INFINITY)
-      )
-        continue;
-      setTimeout(this.visitedFunc, this.animationSpeed, node.row, node.col);
+    for (let i = 0; i < this.visitedNodesToAnimate.length; i++) {
+      let node = this.visitedNodesToAnimate[i];
+      if (node.isVisited()) continue;
+      setTimeout(
+        this.visitedFunc,
+        this.animationSpeed + 100,
+        node.row,
+        node.col
+      );
     }
   }
 
@@ -112,6 +114,7 @@ class Dijkstra {
         }
       }
       this.putVisitedNode(current);
+      this.visitedNodes.push(current);
       setTimeout(
         this.visitedFunc,
         this.animationSpeed,
