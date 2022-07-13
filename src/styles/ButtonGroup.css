@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+
 .btn-group .btn-group-item {
     /*background-color: aquamarine;
     border: 2px solid darkslategray;
@@ -9,6 +11,7 @@
     padding: 10px 24px;
     cursor: pointer;
     float: left;
+    font-family: 'Roboto Mono', monospace;
   }
   
   .btn-group .btn-group-item:hover {
@@ -19,7 +22,7 @@
     background-image: radial-gradient(teal, aquamarine);
     border: 5px solid darkslategray;
     color: white;
-
+    font-family: 'Roboto Mono', monospace;
   width: 100px;
   height: 100px;
   border-radius: 50%;

@@ -4,6 +4,7 @@ import Graph from "../DataStructures/Graph";
 import Dijkstra from "../Algorithms/Dijkstra";
 import "./Grid.css";
 import Header from "../Components/Header";
+import Information from "../Components/Information";
 
 class Grid extends React.Component {
   constructor(props) {
@@ -104,6 +105,7 @@ class Grid extends React.Component {
           currentAlgorithm={this.state.currentAlgorithm}
           setCurrentAlgorithm={this.setCurrentAlgorithm.bind(this)}
         />
+        <Information />
         <div className="grid-main">
           {this.state.graph.getNodes().map((row) => (
             <span className="grid-row">
