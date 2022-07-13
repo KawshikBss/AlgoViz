@@ -1,6 +1,6 @@
 {
-  "homepage": "https://KawshikBss.github.io/PathfindingViz",
-  "name": "pathfindingviz",
+  "homepage": "https://KawshikBss.github.io/AlgoViz",
+  "name": "algoviz",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
