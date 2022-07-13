@@ -16,8 +16,9 @@ function DropMenu({ algorithms, currentAlgorithm, setCurrentAlgorithm }) {
         }}
       >
         {currentAlgorithm === null
-          ? "Select Algorithm"
-          : "Visualize " + currentAlgorithm}
+          ? "Select Algorithm "
+          : "Visualize " + currentAlgorithm + " "}
+        &#x2193;
       </button>
       <div className="dropdown-menu">
         <div className="dropdown-links">
