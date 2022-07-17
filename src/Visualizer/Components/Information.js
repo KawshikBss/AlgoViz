@@ -23,7 +23,7 @@ function Information() {
           <h3>Path Node</h3>
         </span>
         <span className="info-tab-item">
-          <Node status={"Wall"} />
+          <Node status={"wall"} />
           <h3>Wall Node</h3>
         </span>
       </span>
